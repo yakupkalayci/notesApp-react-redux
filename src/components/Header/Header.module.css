@@ -1,0 +1,13 @@
+.header {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.heading {
+    color: gray;
+}
+
+.searchInput {
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+}
