@@ -1,4 +1,4 @@
-import {createSlice, nanoid} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 // const notes = [
 //     {
@@ -21,10 +21,18 @@ import {createSlice, nanoid} from "@reduxjs/toolkit";
 const notesSlice = createSlice({
     name: "todos",
     initialState: {
-        noteList: []
+        noteList: [],
+        selectedColor: ""
     },
-    reducers: {}
+    reducers: {
+        noteAdded: (state, action) => {
+            state.noteList.push(action.payload);
+        },
+        colorChanged: (state, action) => {
+            state.selectedColor = action.payload;
+        }
+    }
 });
 
-
+export const {noteAdded, colorChanged} = notesSlice.actions;
 export default notesSlice.reducer;
