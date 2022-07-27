@@ -22,7 +22,8 @@ const notesSlice = createSlice({
     name: "todos",
     initialState: {
         noteList: [],
-        selectedColor: ""
+        selectedColor: "",
+        searchInput : "",
     },
     reducers: {
         noteAdded: (state, action) => {
@@ -30,9 +31,20 @@ const notesSlice = createSlice({
         },
         colorChanged: (state, action) => {
             state.selectedColor = action.payload;
+        },
+        searchInputChanged: (state, action) => {
+            state.searchInput = action.payload;
         }
     }
 });
 
-export const {noteAdded, colorChanged} = notesSlice.actions;
+export const filteredNotes = (state) => {
+    if(state.notes.searchInput) {
+        const filtered = state.notes.noteList.filter(item => item.note.toLowerCase().indexOf(state.notes.searchInput.toLowerCase()) > -1);
+        return filtered;
+    }
+    return state.notes.noteList;
+}
+
+export const {noteAdded, colorChanged, searchInputChanged} = notesSlice.actions;
 export default notesSlice.reducer;
