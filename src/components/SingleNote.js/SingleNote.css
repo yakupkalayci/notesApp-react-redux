@@ -6,7 +6,8 @@
     margin-bottom: 1rem;
     position: relative;
     border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
 .item > p {
     padding-top: 1rem;
@@ -31,6 +32,10 @@
 
 .icon:hover {
     background-color: rgb(233, 233, 233);
+}
+
+.popup {
+    border: 1px solid red;
 }
 
 .pink {
