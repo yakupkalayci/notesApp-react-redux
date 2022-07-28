@@ -15,6 +15,7 @@ export default function SingleNote({ color, note, id }) {
 
   const handleEdit = () => {
     dispatch(changePopupStatus());
+    console.log(id);
   }
 
   return (

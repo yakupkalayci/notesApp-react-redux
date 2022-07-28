@@ -1,27 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-// const notes = [
-//     {
-//         id: 1,
-//         note: "deneme",
-//         color: "yellow"
-//     },
-//     {
-//         id: 2,
-//         note: "deneme2",
-//         color: "pink"
-//     },
-//     {
-//         id: 3,
-//         note: "deneme3",
-//         color: "blue"
-//     }
-// ];
+const initialNoteList = localStorage.getItem("notes") ? JSON.parse(localStorage.getItem("notes")) : [];
 
 const notesSlice = createSlice({
     name: "todos",
     initialState: {
-        noteList: [],
+        noteList: initialNoteList,
         selectedColor: "",
         searchInput : "",
         showPopup: false
@@ -29,6 +13,7 @@ const notesSlice = createSlice({
     reducers: {
         noteAdded: (state, action) => {
             state.noteList.push(action.payload);
+            localStorage.setItem("notes", JSON.stringify(state.noteList));
         },
         colorChanged: (state, action) => {
             state.selectedColor = action.payload;
@@ -39,10 +24,13 @@ const notesSlice = createSlice({
         noteDeleted: (state, action) => {
             const id = action.payload.id;
             state.noteList = state.noteList.filter(note => note.id !== id);
+            localStorage.setItem("notes", JSON.stringify(state.noteList));
         },
         noteEdited: (state, action) => {
             const {id, newNote} = action.payload;
-            state.noteList = state.noteList.map(item => item.id === id ? {...item, note:newNote} : item)
+            // state.noteList = state.noteList.map(item => item.id === id ? {...item, note:newNote} : item);
+            const editedNote = state.noteList.find(item => item.id === id);
+            editedNote.note = newNote;
         },
         changePopupStatus: (state) => {
             state.showPopup = !state.showPopup;

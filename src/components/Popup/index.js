@@ -18,6 +18,7 @@ export default function Popup({id}) {
         dispatch(noteEdited({id:id, newNote:note}));
         dispatch(changePopupStatus());
         e.preventDefault();
+        console.log(id);
     }
 
     return (
