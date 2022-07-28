@@ -34,6 +34,10 @@ const notesSlice = createSlice({
         },
         searchInputChanged: (state, action) => {
             state.searchInput = action.payload;
+        },
+        noteDeleted: (state, action) => {
+            const id = action.payload.id;
+            state.noteList = state.noteList.filter(note => note.id !== id);
         }
     }
 });
@@ -46,5 +50,5 @@ export const filteredNotes = (state) => {
     return state.notes.noteList;
 }
 
-export const {noteAdded, colorChanged, searchInputChanged} = notesSlice.actions;
+export const {noteAdded, colorChanged, searchInputChanged, noteDeleted} = notesSlice.actions;
 export default notesSlice.reducer;

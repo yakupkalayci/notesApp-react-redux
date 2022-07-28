@@ -11,7 +11,7 @@ export default function NoteList() {
   return (
     <div className={styles.noteList}>
       {filteredNoteList.map((item) => (
-        <SingleNote key={item.id} color={item.color} note={item.note} />
+        <SingleNote key={item.id} color={item.color} note={item.note} id={item.id} />
       ))}
     </div>
   );
