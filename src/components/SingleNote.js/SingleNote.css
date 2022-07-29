@@ -11,6 +11,7 @@
 
 .item > p {
     padding-top: 1rem;
+    overflow: scroll;
 }
 
 .icons {
@@ -43,7 +44,7 @@
 }
 
 .purple {
-    background-color: rgb(164, 78, 164);
+    background-color: rgb(205, 99, 205);
 }
 
 .yellow {
@@ -56,4 +57,10 @@
 
 .green {
     background-color: rgb(61, 170, 61);
+}
+
+@media only screen and (max-width: 1024px) {
+    .item {
+        width: 100%;
+    }
 }
