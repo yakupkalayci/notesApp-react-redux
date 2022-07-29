@@ -11,7 +11,7 @@
 
 .item > p {
     padding-top: 1rem;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .icons {
