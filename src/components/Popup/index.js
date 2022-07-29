@@ -1,11 +1,12 @@
 import {useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {changePopupStatus, noteEdited} from "../../redux/notes/notesSlice";
 
 import styles from "./Popup.module.css";
 
-export default function Popup({id}) {
+export default function Popup() {
     const [note, setNote] = useState("");
+    const currentID = useSelector(state => state.notes.currentID);
     const dispatch = useDispatch();
 
     const handleChange = (e) => setNote(e.target.value);
@@ -15,10 +16,10 @@ export default function Popup({id}) {
     }
 
     const handleSubmit = (e) => {
-        dispatch(noteEdited({id:id, newNote:note}));
+        dispatch(noteEdited({id:currentID, newNote:note}));
         dispatch(changePopupStatus());
+        
         e.preventDefault();
-        console.log(id);
     }
 
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { noteDeleted, changePopupStatus } from "../../redux/notes/notesSlice";
+import { noteDeleted, changePopupStatus, changeCurrentID } from "../../redux/notes/notesSlice";
 import "./SingleNote.css";
 import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
 import Popup from "../Popup";
@@ -15,7 +15,8 @@ export default function SingleNote({ color, note, id }) {
 
   const handleEdit = () => {
     dispatch(changePopupStatus());
-    console.log(id);
+    dispatch(changeCurrentID(id));
+    
   }
 
   return (

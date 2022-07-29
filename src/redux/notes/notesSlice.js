@@ -8,7 +8,8 @@ const notesSlice = createSlice({
         noteList: initialNoteList,
         selectedColor: "",
         searchInput : "",
-        showPopup: false
+        showPopup: false,
+        currentID: "",
     },
     reducers: {
         noteAdded: (state, action) => {
@@ -34,6 +35,9 @@ const notesSlice = createSlice({
         },
         changePopupStatus: (state) => {
             state.showPopup = !state.showPopup;
+        }, 
+        changeCurrentID: (state, action) => {
+            state.currentID = action.payload;
         }
     }
 });
@@ -46,5 +50,5 @@ export const filteredNotes = (state) => {
     return state.notes.noteList;
 }
 
-export const {noteAdded, colorChanged, searchInputChanged, noteDeleted, noteEdited, changePopupStatus} = notesSlice.actions;
+export const {noteAdded, colorChanged, searchInputChanged, noteDeleted, noteEdited, changePopupStatus, changeCurrentID} = notesSlice.actions;
 export default notesSlice.reducer;
