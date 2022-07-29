@@ -17,7 +17,11 @@ export default function NoteForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const color = selectedColor.color;
-    dispatch(noteAdded({id: nanoid(), color, note}));
+    if(note) {
+      dispatch(noteAdded({id: nanoid(), color, note}));
+    }else {
+      alert("Please add note!");
+    }
     setNote("");
   }
 

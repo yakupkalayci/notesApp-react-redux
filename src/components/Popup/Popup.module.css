@@ -69,3 +69,11 @@
     background-color: #fff;
     color: red;
 }
+
+@media only screen and (max-width:768px) {
+    .popupContainer {
+        width: 80%;
+        top: 150px;
+        left: 23px;
+    }
+}
